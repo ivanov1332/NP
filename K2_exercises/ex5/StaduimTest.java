@@ -1,0 +1,96 @@
+//package K2_exercises.ex5;
+//
+//import java.util.HashMap;
+//import java.util.Map;
+//import java.util.Scanner;
+//import java.util.stream.IntStream;
+//
+//class Sector{
+//    String code;
+//    int numOfSeats;
+//    int [] sectorSizes;
+//
+//    public Sector(String numOfSeats, int sectorSizes) {
+//        this.numOfSeats = numOfSeats;
+//        this.sectorSizes = sectorSizes;
+//    }
+//
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public int getNumOfSeats() {
+//        return numOfSeats;
+//    }
+//
+//    public int[] getSectorSizes() {
+//        return sectorSizes;
+//    }
+//}
+//
+//class Stadium{
+//    String nameOfStadium;
+//    String [] sectorNames;
+//    Map<String,Sector> sectors;
+//
+//    public Stadium() {
+//        this.sectors = new HashMap<>();
+//    }
+//
+//    public Stadium(String nameOfStadium, String[] sectorNames) {
+//        this.nameOfStadium = nameOfStadium;
+//        this.sectorNames = sectorNames;
+//    }
+//
+//    public Stadium(String nameOfStadium) {
+//        this.nameOfStadium = nameOfStadium;
+//    }
+//
+//    public String getNameOfStadium() {
+//        return nameOfStadium;
+//    }
+//
+//    public String[] getSectorNames() {
+//        return sectorNames;
+//    }
+//    public void createSectors(String [] sectorNames, int [] sizes) {
+//        IntStream.range(0, sectorNames.length)
+//                .forEach(i -> sectors.put(sectorNames[i], new Sector(sectorNames[i], sizes[i])));
+//    }
+//
+//}
+//
+//public class StaduimTest {
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        int n = scanner.nextInt();
+//        scanner.nextLine();
+//        String[] sectorNames = new String[n];
+//        int[] sectorSizes = new int[n];
+//        String name = scanner.nextLine();
+//        for (int i = 0; i < n; ++i) {
+//            String line = scanner.nextLine();
+//            String[] parts = line.split(";");
+//            sectorNames[i] = parts[0];
+//            sectorSizes[i] = Integer.parseInt(parts[1]);
+//        }
+//        Stadium stadium = new Stadium(name);
+//        stadium.createSectors(sectorNames, sectorSizes);
+//        n = scanner.nextInt();
+//        scanner.nextLine();
+//        for (int i = 0; i < n; ++i) {
+//            String line = scanner.nextLine();
+//            String[] parts = line.split(";");
+//            try {
+//                stadium.buyTicket(parts[0], Integer.parseInt(parts[1]),
+//                        Integer.parseInt(parts[2]));
+//            } catch (SeatNotAllowedException e) {
+//                System.out.println("SeatNotAllowedException");
+//            } catch (SeatTakenException e) {
+//                System.out.println("SeatTakenException");
+//            }
+//        }
+//        stadium.showSectors();
+//    }
+//}
